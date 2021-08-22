@@ -1,0 +1,39 @@
+library(tidyverse)
+
+word_freq <- read_csv("단어빈도표.csv")
+
+n <- word_freq %>% 
+  select(명사) %>% 
+  rename(word = 명사) 
+
+p <- word_freq %>% 
+  select(동사) %>% 
+  rename(word = 동사) 
+
+m <- word_freq %>% 
+  select(형용사) %>% 
+  rename(word = 형용사) 
+
+dic <- read_csv("knu_sentiment_lexicon.csv")
+
+# dic %>% 
+#   mutate(sentiment = ifelse(polarity >=1, "pos",
+#                             ifelse(polarity <= -1, "neg", "neu"))) 
+
+n_join <- n %>% 
+  left_join(dic, by = 'word')
+
+p_join <- p %>% 
+  left_join(dic, by = 'word')
+
+m_join <- m %>% 
+  left_join(dic, by = 'word')
+
+
+word_dic_join <- cbind(n_join, p_join, m_join)
+
+word_dic_join
+
+word_dic_join %>% 
+  write.csv(file = 'newpos_word_dic_join_all.csv', 
+            fileEncoding = "EUC-KR")
