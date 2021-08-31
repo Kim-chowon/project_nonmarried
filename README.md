@@ -1,6 +1,6 @@
 # project_nonmarried
 
-# 0. library 설치 ---------------------------------------------
+0. library 설치 ---------------------------------------------
 # install.packages('tidytext')
 # install.packages("multilinguer")
 # install.packages('rJava')
