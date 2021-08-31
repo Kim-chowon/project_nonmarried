@@ -396,7 +396,7 @@ senti_comment_all %>%
 
 ### 1) 감성사전 데이터  ------------------------------------------------------------
 ```r
-dic <- read_csv(file = 'senti_lexicon_final.csv') 
+dic <- read_csv(file = '6조_senti_lexicon_final.csv') 
 
 dic %>% 
   rename(c('no' = '...1', 'score' = 'polarity')) %>% 
